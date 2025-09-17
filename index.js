@@ -116,13 +116,6 @@ async function startBot() {
 
     
 
-    logger.info('Connecting to database...');
-    db = await connect();
-    if (!db) {
-      throw new Error('Database connection failed');
-    }
-    logger.info('Database connected successfully');
-
     logger.info('Initializing threads and users...');
     await initializeThreadsAndUsers(apiInstance, db);
 
