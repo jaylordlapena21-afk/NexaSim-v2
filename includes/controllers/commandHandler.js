@@ -3,7 +3,6 @@ const path = require('path');
 const logger = require('../logger');
 const config = require('../../config/config.json');
 const language = require(`../../languages/${config.language}.json`);
-const { connect } = require('../../includes/database');
 
 class CommandHandler {
     constructor(api) {
