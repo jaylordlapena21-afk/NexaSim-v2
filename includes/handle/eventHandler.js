@@ -1,8 +1,6 @@
 const logger = require('../logger');
 const config = require('../../config/config.json');
 const language = require(`../../languages/${config.language}.json`);
-const { connect } = require('../../includes/database');
-const { updateUserMessageCount } = require('../../includes/database/user');
 const fs = require('fs');
 const path = require('path');
 
