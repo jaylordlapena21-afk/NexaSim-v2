@@ -12,13 +12,11 @@ class CommandHandler {
         this.reactionHandlers = new Map();
         this.replyHandlers = new Map();
         this.db = null;
-        this.initDb();
+        
         this.loadCommands();
     }
 
-    async initDb() {
-        this.db = await connect();
-    }
+    
 
     loadCommands() {
         const commandDir = path.join(__dirname, '../../modules/commands');
@@ -43,13 +41,7 @@ class CommandHandler {
             return;
         }
 
-        if (this.db) {
-            const usersCollection = this.db.collection('users');
-            const user = await usersCollection.findOne({ userId: event.senderID });
-            if (user && user.ban) {
-                this.api.sendMessage('You are banned from using this bot.', event.threadID);
-                return;
-            }
+        
 
             const settingsCollection = this.db.collection('settings');
             const adminOnlySetting = await settingsCollection.findOne({ setting: "adminOnlyMode" });
